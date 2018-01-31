@@ -5,6 +5,10 @@ function getStats(txt) {
 
     let nChars = txt.length;
     let nWords = 0;
+    // finds length of an array split per new line
+    let nLines = (function findLines(text){
+        return text.split(/\r\n|\n|\r/).length;
+    }(txt));
     // creates array of words
     let wordArray = (function findWords(text){
         arrayofwords = text
@@ -26,7 +30,7 @@ function getStats(txt) {
     return {
         nChars,
         nWords,
-        nLines: 10,
+        nLines,
         nNonEmptyLines: 22,
         averageWordLength: 3.3,
         maxLineLength: 33,
