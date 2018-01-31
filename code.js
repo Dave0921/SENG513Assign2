@@ -2,8 +2,11 @@
 // this is just a stub for a function you need to implement
 //
 function getStats(txt) {
+
+    nChars = txt.length;
+
     return {
-        nChars: 123,
+        nChars,
         nWords: 22,
         nLines: 10,
         nNonEmptyLines: 22,
