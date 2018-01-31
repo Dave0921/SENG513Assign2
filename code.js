@@ -3,7 +3,7 @@
 //
 function getStats(txt) {
 
-    nChars = txt.length;
+    let nChars = txt.length;
 
     return {
         nChars,
