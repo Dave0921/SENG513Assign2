@@ -1,6 +1,4 @@
 //
-// this is just a stub for a function you need to implement
-//
 function getStats(txt) {
     let nChars = txt.length;
     let nWords = 0;
@@ -75,4 +73,3 @@ function getStats(txt) {
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
 }
-
