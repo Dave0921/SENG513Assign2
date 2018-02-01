@@ -53,8 +53,10 @@ function getStats(txt) {
     // calculates average word length from array of words
     let averageWordLength = (function findavgwordlength(warray){
         let sum = 0;
-        for(i=0;i<warray.length;i++){
-            sum = sum + warray[i].length;
+        if (warray.length>0){
+            for(i=0;i<warray.length;i++){
+                sum = sum + warray[i].length;
+            }
         }
         return sum/warray.length;
     }(wordArray));
