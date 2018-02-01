@@ -43,7 +43,7 @@ function getStats(txt) {
         .replace(/\r\n|\n|\t|\r/g, ' ')
         // splits string in terms of whitespace
         .split(' ')
-        // filters out spaces from array
+        // filters out whitespaces from array
         .filter(function(array) {
             return array != ''
         });
