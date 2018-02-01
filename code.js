@@ -50,14 +50,21 @@ function getStats(txt) {
         return arrayofwords;
     }(txt));
     nWords = wordArray.length;
-    console.log(wordArray);
+
+    let averageWordLength = (function findavgwordlength(warray){
+        let sum = 0;
+        for(i=0;i<warray.length;i++){
+            sum = sum + warray[i].length;
+        }
+        return sum/warray.length;
+    }(wordArray));
 
     return {
         nChars,
         nWords,
         nLines,
         nNonEmptyLines,
-        averageWordLength: 3.3,
+        averageWordLength,
         maxLineLength,
         palindromes: ["12321", "kayak", "mom"],
         longestWords: ["xxxxxxxxx", "123444444"],
