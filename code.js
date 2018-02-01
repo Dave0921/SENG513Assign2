@@ -16,12 +16,9 @@ function getStats(txt) {
     let maxLineLength = (function findMaxLineLength(text){
         let lineArray = text.split(/\r\n|\n|\r/);
         let maxLength = lineArray[0].length;
-        console.log(lineArray);
-        for (i=0;i<(lineArray.length-1);i++){
-            for (j=(i+1);j<lineArray.length;j++){
-                if (lineArray[j].length>lineArray[i].length){
-                    maxLength = lineArray[j].length;
-                }
+        for (i=1;i<lineArray.length;i++){
+            if (lineArray[i].length>maxLength){
+                maxLength = lineArray[i].length;
             }
         }
         return maxLength;
