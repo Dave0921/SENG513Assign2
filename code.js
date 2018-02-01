@@ -1,5 +1,7 @@
 //
 function getStats(txt) {
+    // sets all word characters to lowercase characters
+    let lowercasetxt = txt.toLowerCase();
     let nChars = txt.length;
     let nWords = 0;
     // finds length of an array split per new line; counts number of lines
