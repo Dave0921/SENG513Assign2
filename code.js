@@ -67,6 +67,7 @@ function getStats(txt) {
         let paliArray = [];
         let isPalindrome = false;
         for (i=0;i<warray.length;i++){
+            // word length must be greater than 2
             if (warray[i].length>2){
                 for (j=0;j<(warray[i].length/2);j++){
                     if (warray[i][j]!==warray[i][warray[i].length-j-1]){
@@ -80,7 +81,6 @@ function getStats(txt) {
                 }
             }
         }
-        console.log(paliArray);
         return paliArray;
     }(wordArray));
     return {
