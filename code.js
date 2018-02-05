@@ -83,6 +83,25 @@ function getStats(txt) {
         }
         return paliArray;
     }(wordArray));
+    // remove duplicates from word array
+    noDupWordArray = wordArray.filter(function(item, index, inputArray){
+        return inputArray.indexOf(item)=== index;
+    });
+    // finds 10 longest words in word array
+    longestW = (function findLongest(warray){
+        let longestArray = warray;
+        longestArray.sort(function(a, b){
+            return b.length - a.length;
+        });
+        if (longestArray.length>10){
+            longestArray = longestArray.slice(0,10);
+        }
+        console.log(longestArray);
+    }(noDupWordArray));
+    // finds 10 most frequent words in word array
+    frequentW = (function findFrequent(warray){
+
+    }(wordArray));
     return {
         nChars,
         nWords,
