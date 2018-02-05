@@ -88,7 +88,7 @@ function getStats(txt) {
         return inputArray.indexOf(item)=== index;
     });
     // finds 10 longest words in word array
-    longestWords = (function findLongest(warray){
+    let longestWords = (function findLongest(warray){
         let longestArray = warray;
         longestArray.sort(function(a, b){
             return b.length - a.length;
@@ -96,7 +96,7 @@ function getStats(txt) {
         if (longestArray.length>10){
             longestArray = longestArray.slice(0,10);
         }
-        console.log(longestArray);
+        return longestArray;
     }(noDupWordArray));
     // finds 10 most frequent words in word array
     frequentW = (function findFrequent(warray){
