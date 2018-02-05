@@ -91,12 +91,7 @@ function getStats(txt) {
     let longestWords = (function findLongest(warray){
         let longestArray = warray;
         longestArray.sort(function(a, b){
-            if (a>b) return -1;
-            else if (a<b) return 1;
-            else return 0;
-        });
-        longestArray.sort(function(a, b){
-            return b.length - a.length;
+            return b.length - a.length || a.localeCompare(b);
         });
         if (longestArray.length>10){
             longestArray = longestArray.slice(0,10);
