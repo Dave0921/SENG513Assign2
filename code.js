@@ -90,7 +90,7 @@ function getStats(txt) {
         nNonEmptyLines,
         averageWordLength,
         maxLineLength,
-        palindromes: ["12321", "kayak", "mom"],
+        palindromes,
         longestWords: ["xxxxxxxxx", "123444444"],
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
