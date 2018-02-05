@@ -88,7 +88,7 @@ function getStats(txt) {
         return inputArray.indexOf(item)=== index;
     });
     // finds 10 longest words in word array
-    longestW = (function findLongest(warray){
+    longestWords = (function findLongest(warray){
         let longestArray = warray;
         longestArray.sort(function(a, b){
             return b.length - a.length;
@@ -110,7 +110,7 @@ function getStats(txt) {
         averageWordLength,
         maxLineLength,
         palindromes,
-        longestWords: ["xxxxxxxxx", "123444444"],
+        longestWords,
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
 }
