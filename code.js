@@ -11,7 +11,7 @@ function getStats(txt) {
             numLines = text.split(/\r\n|\n|\r/).length;
         }
         return numLines;
-    }(txt));
+    }(lowercasetxt));
     // finds maximum line length
     let maxLineLength = (function findMaxLineLength(text){
         let lineArray = text.split(/\r\n|\n|\r/);
@@ -22,7 +22,7 @@ function getStats(txt) {
             }
         }
         return maxLength;
-    }(txt));
+    }(lowercasetxt));
     // find number of non empty lines
     let nNonEmptyLines = (function findLines(text){
         let count = 0;
@@ -33,7 +33,7 @@ function getStats(txt) {
             }
         }
         return count;
-    }(txt));
+    }(lowercasetxt));
     // creates array of words
     let wordArray = (function findWords(text){
         arrayofwords = text
@@ -48,21 +48,41 @@ function getStats(txt) {
             return array != ''
         });
         return arrayofwords;
-    }(txt));
+    }(lowercasetxt));
     nWords = wordArray.length;
     // calculates average word length from array of words
     let averageWordLength = (function findavgwordlength(warray){
         let sum = 0;
         let avg = 0;
         if (warray.length>0){
-            for(i=0;i<warray.length;i++){
+            for (i=0;i<warray.length;i++){
                 sum = sum + warray[i].length;
             }
             avg = sum/warray.length;
         }
         return avg;
     }(wordArray));
-
+    // finds palindromes in array of words
+    palindromes = (function findpalindrome(warray){
+        let paliArray = [];
+        let isPalindrome = false;
+        for (i=0;i<warray.length;i++){
+            if (warray[i].length>2){
+                for (j=0;j<(warray[i].length/2);j++){
+                    if (warray[i][j]!==warray[i][warray[i].length-j-1]){
+                        isPalindrome = false;
+                        break;
+                    }
+                    isPalindrome = true;
+                }
+                if (isPalindrome === true){
+                    paliArray.push(warray[i]);
+                }
+            }
+        }
+        console.log(paliArray);
+        return paliArray;
+    }(wordArray));
     return {
         nChars,
         nWords,
