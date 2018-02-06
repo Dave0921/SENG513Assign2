@@ -38,9 +38,11 @@ function getStats(txt) {
     let wordArray = (function findWords(text){
         arrayofwords = text
         // replace special characters with whitespace
-        .replace(/[`~!@#$%^&*()_|+\-=?;:'"“”,.<>\{\}\[\]\\\/]/g, ' ')
+        .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
         // replace new lines, new tabs etc with whitespace
         .replace(/\r\n|\n|\t|\r/g, ' ')
+        // replace curly quotation marks
+        .replace(/[\u201C\u201D\u2018\u2019]/g,' ')
         // splits string in terms of whitespace
         .split(' ')
         // filters out whitespaces from array
