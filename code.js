@@ -94,16 +94,31 @@ function getStats(txt) {
         let longestArray = warray;
         longestArray.sort(function(a, b){
             // compare if word b is longer than word a and then compare if word a is greater than b alphabetically
-            return b.length - a.length || (a>b ? 1 : -1);
+            return b.length - a.length || (a > b ? 1 : -1);
         });
-        if (longestArray.length>10){
-            longestArray = longestArray.slice(0,10);
-        }
+        if (longestArray.length>10) longestArray = longestArray.slice(0,10);
         return longestArray;
     }(noDupWordArray));
     // finds 10 most frequent words in word array
-    frequentW = (function findFrequent(warray){
-
+    let mostFrequentWords = (function findFrequent(warray){
+        let dictionaryArray = {};
+        let freqArray = [];
+        // count frequency of words and store it into object
+        for (let words of warray){
+            if (dictionaryArray[words] === undefined) dictionaryArray[words] = 1;
+            else dictionaryArray[words]++;
+        }
+        // sort object keys by most frequent word and alphabetically and store results, which are formated, into an array
+        freqArray = Object.keys(dictionaryArray).map(function (key){
+            return [key, this[key]]
+        }, dictionaryArray).sort(function (a, b){
+            return b[1] - a[1] || (a > b ? 1 : -1);
+        }).map(function(word){
+            return word[0] + '(' + word[1] + ')';
+        });
+        if (freqArray.length>10) freqArray = freqArray.slice(0,10);
+        // console.log(freqArray);
+        return freqArray;
     }(wordArray));
     return {
         nChars,
@@ -114,6 +129,6 @@ function getStats(txt) {
         maxLineLength,
         palindromes,
         longestWords,
-        mostFrequentWords: ["hello(7)", "world(1)"]
+        mostFrequentWords
     };
 }
