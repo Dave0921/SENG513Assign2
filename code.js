@@ -41,7 +41,7 @@ function getStats(txt) {
         .replace(/[`~!@#$%^&*()_—|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
         // replace new lines, new tabs etc with whitespace
         .replace(/\r\n|\n|\t|\r/g, ' ')
-        // replace curly quotation marks note: could not replace curly quotations marks with method above
+        // replace curly quotation marks; Note: could not replace curly quotations marks with characters so unicode was used instead
         .replace(/[\u201C\u201D\u2018\u2019]/g,' ')
         // splits string in terms of whitespace
         .split(' ')
