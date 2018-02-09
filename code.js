@@ -38,7 +38,7 @@ function getStats(txt) {
     let wordArray = (function findWords(text){
         arrayofwords = text
         // replace special characters with whitespace
-        .replace(/[`~!@#$%^&*()_—|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
+        .replace(/[`~!@#$%^&*()_–—|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
         // replace new lines, new tabs etc with whitespace
         .replace(/\r\n|\n|\t|\r/g, ' ')
         // replace curly quotation marks; Note: could not replace curly quotations marks with characters so unicode was used instead
