@@ -16,7 +16,7 @@ function getStats(txt) {
     let maxLineLength = (function findMaxLineLength(text){
         let lineArray = text.split(/\r\n|\n|\r/);
         let maxLength = lineArray[0].length;
-        for (i=1;i<lineArray.length;i++){
+        for (let i=1;i<lineArray.length;i++){
             if (lineArray[i].length>maxLength){
                 maxLength = lineArray[i].length;
             }
@@ -27,7 +27,7 @@ function getStats(txt) {
     let nNonEmptyLines = (function findLines(text){
         let count = 0;
         let lineArray = text.split(/\r\n|\n|\r/);
-        for (i=0;i<lineArray.length;i++){
+        for (let i=0;i<lineArray.length;i++){
             if (lineArray[i].replace(/\s/g,'').length){
                 count++;
             }
@@ -36,21 +36,27 @@ function getStats(txt) {
     }(lowercasetxt));
     // creates array of words
     let wordArray = (function findWords(text){
-        arrayofwords = text
-        // replace special characters with whitespace
-        .replace(/[`~!@#$%^&*()_–—|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
+        let lowerwords = text.toLowerCase();
+        let upperwords = text.toUpperCase();
+        // check if character is special character (lowercase === uppercase (excluding numbers)) and replaces it with whitespace
+        for (let i=0;i<text.length;i++){
+            if (lowerwords[i] === upperwords[i] && isNaN(lowerwords[i])===true){
+                lowerwords = (function(str, index, char){
+                    return str.substring(0,i) + char + str.substring(index +1);
+                }(lowerwords, i, ' '));
+            }
+        }
+        let arrayofwords = lowerwords
         // replace new lines, new tabs etc with whitespace
         .replace(/\r\n|\n|\t|\r/g, ' ')
-        // replace curly quotation marks; Note: could not replace curly quotations marks with characters so unicode was used instead
-        .replace(/[\u201C\u201D\u2018\u2019]/g,' ')
-        // splits string in terms of whitespace
+        // splits string in an array using whitespaces
         .split(' ')
-        // filters out whitespaces from array
+        // filters out empty elements from array
         .filter(function(array) {
             return array != ''
         });
         return arrayofwords;
-    }(lowercasetxt));
+    }(txt));
     nWords = wordArray.length;
     // calculates average word length from array of words
     let averageWordLength = (function findavgwordlength(warray){
