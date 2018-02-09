@@ -41,7 +41,7 @@ function getStats(txt) {
         .replace(/[`~!@#$%^&*()_—|+\-=?;:'",.<>\{\}\[\]\\\/]/g, ' ')
         // replace new lines, new tabs etc with whitespace
         .replace(/\r\n|\n|\t|\r/g, ' ')
-        // replace curly quotation marks
+        // replace curly quotation marks note: could not replace curly quotations marks with method above
         .replace(/[\u201C\u201D\u2018\u2019]/g,' ')
         // splits string in terms of whitespace
         .split(' ')
@@ -108,7 +108,7 @@ function getStats(txt) {
             if (dictionaryArray[words] === undefined) dictionaryArray[words] = 1;
             else dictionaryArray[words]++;
         }
-        // sort object keys by most frequent word and alphabetically and store results, which are formated, into an array
+        // sort object keys by most frequent word and alphabetically, formats results, and stores them into an array
         freqArray = Object.keys(dictionaryArray).map(function (key){
             return [key, this[key]]
         }, dictionaryArray).sort(function (a, b){
